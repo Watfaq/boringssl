@@ -580,7 +580,11 @@ set_target_properties(
   COMPILE_FLAGS "${PKI_CXX_FLAGS}")
 
 add_executable(bssl ${BSSL_SOURCES})
-install_if_enabled(TARGETS bssl DESTINATION ${INSTALL_DESTINATION_DEFAULT})
+if (NO_INSTALL_BSSL)
+  message(STATUS "Not installing bssl")
+else
+  install_if_enabled(TARGETS bssl DESTINATION ${INSTALL_DESTINATION_DEFAULT})
+endif()
 target_link_libraries(bssl ssl crypto)
 
 # Historically, targets were built in subdirectories. For compatibility with
