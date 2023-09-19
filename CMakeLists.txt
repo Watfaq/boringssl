@@ -582,7 +582,7 @@ set_target_properties(
 add_executable(bssl ${BSSL_SOURCES})
 if (NO_INSTALL_BSSL)
   message(STATUS "Not installing bssl")
-else
+else()
   install_if_enabled(TARGETS bssl DESTINATION ${INSTALL_DESTINATION_DEFAULT})
 endif()
 target_link_libraries(bssl ssl crypto)
